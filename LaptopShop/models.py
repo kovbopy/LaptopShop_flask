@@ -87,10 +87,10 @@ class Laptop(db.Model):
         db.session.commit()
 
     def return_(self,owner):
-        past_owners.update({self.id: self.owner})
-
         self.owner = past_owners.get(self.id)
         owner.budget += self.price
         db.session.commit()
+
+        past_owners.update({self.id: self.owner})
 
 
