@@ -91,6 +91,6 @@ class Laptop(db.Model):
         owner.budget += self.price
         db.session.commit()
 
-        past_owners.update({self.id: self.owner})
+
 
 
