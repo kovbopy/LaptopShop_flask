@@ -1,4 +1,3 @@
-import time
 from datetime import datetime
 from flask import app
 from LaptopShop import db, login_manager

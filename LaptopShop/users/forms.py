@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
 from flask_login import current_user
 from flask_wtf.file import FileField, FileAllowed
-from wtforms import StringField, PasswordField, SubmitField, IntegerField
+from wtforms import StringField, PasswordField, SubmitField
 from wtforms.validators import DataRequired, Length, Email, ValidationError, EqualTo
 from LaptopShop.models import User
 
@@ -47,20 +47,6 @@ class UpdateProfileForm(FlaskForm):
             user = User.query.filter_by(email=email.data).first()
             if user:
                 raise ValidationError('This email is already taken.')
-
-
-class LaptopForm(FlaskForm):
-    name = StringField('Name',validators=[DataRequired(), Length(min=6, max=20)])
-    price=IntegerField('Price',validators=[DataRequired(), Length(min=6, max=20)])
-    description = StringField('description', validators=[DataRequired(), Length(min=6, max=200)])
-    submit = SubmitField('Update!')
-
-
-class PurchaseForm(FlaskForm):
-    submit = SubmitField(label='Purchase')
-
-class SellForm(FlaskForm):
-    submit = SubmitField(label='Sell')
 
 class RequestResetForm(FlaskForm):
     email = StringField('Email',validators=[DataRequired(), Email()])
